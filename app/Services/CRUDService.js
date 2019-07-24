@@ -19,6 +19,25 @@ class CRUDService{
 
         return res
     }
+
+    static async getRecordWith(model, id, whereQuery = {}, withRelation = [], selectQuery = '*'){
+        const Model = use(model)
+        selectQuery = selectQuery.split(',')
+        console.log(selectQuery)
+        let query = Model.query()
+            .select(selectQuery)
+            .where('id',id)
+            .where(whereQuery)
+
+        withRelation.forEach(item=>{
+            query = query.with(item)
+        })
+
+        let data = await query.fetch()
+
+        return data
+
+    }
 }
 
 module.exports = CRUDService

@@ -24,7 +24,7 @@ class UserController {
     }
 
     async getUserWithNews({request, response, params}) {
-        const data = await User.query().where('id', params.id).with('news').fetch()
+        const data = await CRUDService.getRecordWith('App/Models/User', params.id, {}, ['news'])
         
         return response.ok(data)
     }
