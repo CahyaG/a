@@ -20,7 +20,7 @@ class CRUDService{
         return res
     }
 
-    static async getRecordWith(model, id, whereQuery = {}, withRelation = [], selectQuery = '*'){
+    static async getRecordWithRelation(model, id, whereQuery = {}, withRelation = [], selectQuery = '*'){
         const Model = use(model)
         selectQuery = selectQuery.split(',')
         console.log(selectQuery)
