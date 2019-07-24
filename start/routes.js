@@ -55,12 +55,12 @@ Route.any('/test',async ({response})=>{
     // console.log(id)
     let user = await User.query().fetch()
     user = user.toJSON()
-    user = user.map(item =>{
-        let date = new Date(item.updated_at)
-        item.test_map = Math.ceil(Math.random() * 26)
-        console.log(item.test)
-        return item
-    })
+    // user = user.map(item =>{
+    //     let date = new Date(item.updated_at)
+    //     item.test_map = Math.ceil(Math.random() * 26)
+    //     console.log(item.test)
+    //     return item
+    // })
     return response.ok(user)
     // return ms('1m')
 })
